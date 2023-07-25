@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Companies</title>
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+  <div class="wrapper">
+    <div class="table-header">
+      <h4>Companies</h4>
+      <div class="action-wrapper">
+        <img id="addCompanyBtn" onclick="toggleAddForm()" src="assets/plus-solid.svg" alt="Add company" class="action-icon" />
+        <img id="deleteCompanyBtn" src="assets/delete.svg" alt="Delete Company" class="action-icon hidden" />
+      </div>
+    </div>
+    <form id="addForm" class="box hidden" action="javascript:void(0);" method="POST" onsubmit="addCompany()">
+      <h4>Add company</h4>
+      <input type="text" id="add-name" placeholder="New company">
+      <input type="submit" value="Add">
+    </form>
+
+    <table class="table">
+      <tr>
+        <th>Company Name</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Phone</th>
+      </tr>
+      <tbody id="companies"></tbody>
+    </table>
+
+    <div class="box">
+      <h4>Company details</h4>
+      <h5 id="company-name-header"></h5>
+    </div>
+    <div id="details-wrapper" class="hidden">
+      <form class="container-vertical" name="saveCompanyForm" action="javascript:void(0);" onsubmit="updateCompany()">
+        <div class="box info table-header">
+          <h4>Info</h4>
+          <div class="action-wrapper">
+            <input id="saveInfoBtn" type="submit" alt="Save Company details" class="action-icon" />
+          </div>
+        </div>
+        <div id="details" class="info-table">
+
+        </div>
+      </form>
+      <div class="box history container-vertical">
+        <div class="table-header">
+          <h4>History</h4>
+          <div class="action-wrapper">
+            <img id="reloadOrdersBtn" onclick="getOrders()" src="assets/arrows-rotate-solid.svg" alt="Reload Orders" class="action-icon" />
+          </div>
+        </div>
+        <table class="table">
+          <tr>
+            <th>Order date</th>
+            <th>Store City</th>
+          </tr>
+          <tbody id="orders"></tbody>
+        </table>
+
+      </div>
+      <div class="box notes container-vertical">
+        <div class="table-header">
+          <h4>Notes</h4>
+          <div class="action-wrapper">
+            <img id="reloadNotesBtn" onclick="getOrdersWithEmployees()" src="assets/arrows-rotate-solid.svg" alt="Reload Notes" class="action-icon" />
+          </div>
+        </div>
+        <table class="table">
+          <tr>
+            <th>Invoice Number</th>
+            <th>Employee</th>
+          </tr>
+          <tbody id="notes"></tbody>
+        </table>
+
+      </div>
+      <div class="box employees employees-table">
+        <div class="box employees container-vertical">
+          <div class="table-header">
+            <h4>Employees</h4>
+            <div class="action-wrapper">
+              <img id="reloadNotesBtn" onclick="getEmployees()" src="assets/arrows-rotate-solid.svg" alt="Reload Employees" class="action-icon" />
+            </div>
+          </div>
+          <table class="table">
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+            </tr>
+            <tbody id="employees"></tbody>
+          </table>
+
+        </div>
+        <form id="employeeForm" class="box employees container-vertical" name="saveEmployeeForm" action="javascript:void(0);" onsubmit="addEmployee()">
+          <div class="action-wrapper align-right">
+            <input id="saveEmployeeBtn" type="submit" alt="Save Employee" class="action-icon" />
+            <img id="deleteEmployeeBtn" src="assets/delete.svg" alt="Delete Employee" class="action-icon" />
+          </div>
+            <div id="employees" class="info-table">
+              <label for="firstNameInput">First Name</label>
+              <input type="text" id="firstNameInput" />
+              <label for="lastNameInput">Last Name</label>
+              <input type="text" id="lastNameInput" />
+              <label for="titleInput">Title</label>
+              <input type="text" id="titleInput" />
+              <label for="birthDateInput">Birth Date</label>
+              <input type="date" id="birthDateInput" />
+              <label for="positionInput">Position</label>
+              <input type="text" id="positionInput" />
+            </div>
+        </form>
+      </div>
+
+  <script src="js/site.js" asp-append-version="true"></script>
+  <script type="text/javascript">
+    getCompanies();
+  </script>
+</body>
+</html>
